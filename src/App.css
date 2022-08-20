@@ -150,7 +150,6 @@ span{
 
 }
 .edit{
-    padding: .5em .7em;
     color: black;
     border: none;
     cursor: pointer;
@@ -158,6 +157,7 @@ span{
     background-image: url(../public/pencil.png);
     background-repeat: no-repeat;
     background-position: center;
+    padding: .6em 1.338em;
 }
 button:hover{
     filter: saturate(200%);

@@ -40,7 +40,7 @@ const userCard = ({ user, getAllUsers, setUserInfo, toggleForm, item }) => {
           <i className="far fa-trash-alt"></i>
         </button>
         <button className="edit" onClick={getUser}>
-          <img src="../public/pencil.png" alt="" />
+          
         </button>
       </div>
     </motion.article>
