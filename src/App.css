@@ -114,7 +114,7 @@ input{
     cursor: pointer;
 }
 
-article{
+.article-card{
     width: 381px;
     height: 274px;
     background-color: rgb(255, 255, 255);
@@ -124,7 +124,7 @@ article{
     
 }
 
-article:hover{
+.article-card:hover{
     transform: scale(1.02);
     transition: ease 200ms;
 }
@@ -146,9 +146,7 @@ span{
     padding: .6em .9em;
     cursor: pointer;
 }
-.trash:hover{
 
-}
 .edit{
     color: black;
     border: none;

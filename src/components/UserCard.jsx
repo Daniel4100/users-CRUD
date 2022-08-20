@@ -23,7 +23,7 @@ const userCard = ({ user, getAllUsers, setUserInfo, toggleForm, item }) => {
   };
 
   return (
-    <motion.article layout variants={item} exit="hidden">
+    <motion.article className="article-card" layout variants={item} exit="hidden">
       <div>
         <h4>
           {user.first_name} {user.last_name}
