@@ -155,6 +155,9 @@ span{
     border: none;
     cursor: pointer;
     background-color: #686fa7ec;
+    background-image: url(../public/pencil.png);
+    background-repeat: no-repeat;
+    background-position: center;
 }
 button:hover{
     filter: saturate(200%);
