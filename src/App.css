@@ -164,3 +164,10 @@ button:hover{
     /* transform: scale(1.08);
     transition: 300ms ease; */
 }
+
+@media (max-width: 418px) {
+    .addUser{
+        padding: .7em;
+        width: 100px;
+    }
+}
