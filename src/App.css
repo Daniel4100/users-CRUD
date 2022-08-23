@@ -96,11 +96,12 @@ hr{
 
 .containerUsers{
     width: 100%;
-    min-height: 100vh;
+    min-height: 100%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 30px;
+    align-items: center;
 }
 input{
     background-color: #f3f2f2;
@@ -126,10 +127,7 @@ input{
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-.article-card:hover{
-    transform: scale(1.02);
-    transition: ease 200ms;
-}
+
 
 span{
     color: #D3D3D3;
@@ -165,9 +163,16 @@ button:hover{
     transition: 300ms ease; */
 }
 
-@media (max-width: 418px) {
+@media (max-width: 390px) {
     .addUser{
         padding: .7em;
-        width: 100px;
+        width: 200px;
+    }
+    
+}
+@media (max-width: 890px) {
+    
+    .containerTitle{
+        padding: 0;
     }
 }

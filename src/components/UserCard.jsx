@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, transform } from "framer-motion";
 
 const userCard = ({ user, getAllUsers, setUserInfo, toggleForm, item }) => {
 
@@ -23,7 +23,10 @@ const userCard = ({ user, getAllUsers, setUserInfo, toggleForm, item }) => {
   };
 
   return (
-    <motion.article className="article-card" layout variants={item} initial='hidden' animate='show' whileHover={{ scale: 1.02, transition: {duration: 0.1 }}} whileTap={{ scale: 1.02, transition: {duration: 0.1 }}}   exit="hidden">
+    <motion.article className="article-card"  variants={item} whileHover={{
+      scale: 1.02,
+      transition: { duration: 0.1 },
+    }} layout>
       {/* //duration 0.7 agregada como prueba */}
       <div>
         <h4>

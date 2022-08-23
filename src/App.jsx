@@ -30,17 +30,16 @@ function App() {
     show: {
       opacity: 1,
       transition: {
-        delayChildren: 1
-      }
-    }
-  }
-  
+        staggerChildren: 0.3,
+      },
+    },
+  };
+
   const item = {
     hidden: { opacity: 0 },
-    show: { opacity: 1 }, 
-    
+    show: { opacity: 1 },
 
-  }
+  };
 
   return (
     <div className="App">
@@ -49,34 +48,48 @@ function App() {
           {" "}
           <h2>Users</h2>
         </div>
-        <div >
-          <button className="addUser" onClick={toggleForm}>+ create a new user</button>
+        <div>
+          <button className="addUser" onClick={toggleForm}>
+            + create a new user
+          </button>
         </div>
       </div>
       <AnimatePresence>
-      {isForm && (
-        
-        
-          <UserForm getAllUsers={getAllUsers} toggleForm={toggleForm} userInfo={userInfo} setUserInfo={setUserInfo} setisForm={setisForm} />
-          
-        
-        
-      )}
+        {isForm && (
+          <UserForm
+            getAllUsers={getAllUsers}
+            toggleForm={toggleForm}
+            userInfo={userInfo}
+            setUserInfo={setUserInfo}
+            setisForm={setisForm}
+          />
+        )}
       </AnimatePresence>
       <AnimatePresence>
-      <motion.div layout variants={container} initial='hidden' animate='show' className="containerUsers">
-        {allUsers?.sort((userFirst, usersecond) => userFirst.id > usersecond.id ? 1 : -1).map((user) => (
-          <UserCard
-            key={user.id}
-            user={user}
-            getAllUsers={getAllUsers}
-            setUserInfo={setUserInfo}
-            toggleForm={toggleForm}
-            item={item}
-          />
-        ))}
-        
-      </motion.div> 
+        {allUsers && (
+          <motion.div
+            layout
+            variants={container}
+            initial="hidden"
+            animate="show"
+            className="containerUsers"
+          >
+            {allUsers
+              .sort((userFirst, usersecond) =>
+                userFirst.id > usersecond.id ? 1 : -1
+              )
+              .map((user) => (
+                <UserCard
+                  key={user.id}
+                  user={user}
+                  getAllUsers={getAllUsers}
+                  setUserInfo={setUserInfo}
+                  toggleForm={toggleForm}
+                  item={item}
+                />
+              ))}
+          </motion.div>
+        )}
       </AnimatePresence>
     </div>
   );
