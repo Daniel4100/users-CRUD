@@ -37,7 +37,9 @@ function App() {
   
   const item = {
     hidden: { opacity: 0 },
-    show: { opacity: 1 }
+    show: { opacity: 1 }, 
+    
+
   }
 
   return (
@@ -54,10 +56,10 @@ function App() {
       <AnimatePresence>
       {isForm && (
         
-        <motion.div variants={container} initial='hidden' animate='show' exit='hidden' className="containerForm">
+        
           <UserForm getAllUsers={getAllUsers} toggleForm={toggleForm} userInfo={userInfo} setUserInfo={setUserInfo} setisForm={setisForm} />
           
-        </motion.div>
+        
         
       )}
       </AnimatePresence>

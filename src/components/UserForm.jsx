@@ -1,6 +1,8 @@
 import axios from "axios";
+import { MotionConfig } from "framer-motion";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { motion } from "framer-motion";
 
 const defaultValues = {
   first_name: "",
@@ -9,6 +11,22 @@ const defaultValues = {
   password: "",
   birthday: "",
 };
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      delayChildren: 1
+    }
+  }
+}
+
+const item = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1 }, 
+  
+
+}
 
 const UserForm = ({ getAllUsers, toggleForm, userInfo, setUserInfo }) => {
   const { register, handleSubmit, reset } = useForm();
@@ -54,7 +72,8 @@ const UserForm = ({ getAllUsers, toggleForm, userInfo, setUserInfo }) => {
   console.log(defaultValues);
 
   return (
-    <div className="form">
+    <motion.div  initial='hidden' variants={item} animate='show' exit='hidden' className="containerForm" >
+    <div  className="form">
       <div className="formBox1">
         <p className="black">
           {
@@ -84,6 +103,7 @@ const UserForm = ({ getAllUsers, toggleForm, userInfo, setUserInfo }) => {
       
       <button className="close" onClick={resetForm}><i className="fas fa-times"></i></button>
     </div>
+    </motion.div>
   );
 };
 
