@@ -39,6 +39,7 @@ hr{
     font-weight: 400;
     font-size: 16px;
     cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .containerForm{
     width: 100%;
@@ -96,7 +97,6 @@ hr{
 .containerUsers{
     width: 100%;
     min-height: 100vh;
-    height: 100vh;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -123,7 +123,7 @@ input{
     padding: .7em .9em;
     border: 1px solid #E5E5E5;
     border-radius: 4px;
-    
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .article-card:hover{
