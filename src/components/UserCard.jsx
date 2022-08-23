@@ -23,7 +23,7 @@ const userCard = ({ user, getAllUsers, setUserInfo, toggleForm, item }) => {
   };
 
   return (
-    <motion.article className="article-card" layout variants={item} initial='hidden' animate='show' whileHover={{ scale: 1.02, duration: 0.7 }} transition={{ duration: 0.1 }}  exit="hidden">
+    <motion.article className="article-card" layout variants={item} initial='hidden' animate='show' whileHover={{ scale: 1.02, transition: {duration: 0.1 }}}   exit="hidden">
       {/* //duration 0.7 agregada como prueba */}
       <div>
         <h4>
