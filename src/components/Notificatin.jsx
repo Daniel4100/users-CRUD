@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import {motion} from 'framer-motion'
 
-const Notificatin = ({ idCard, setIsToogle,getAllUsers, item }) => {
+const Notificatin = ({ idCard, setIsToogle,getAllUsers, item, setConfirmation }) => {
 
   const deleteUser = () => {
     const URL = `https://users-crud1.herokuapp.com/users/${idCard}/`;
@@ -11,6 +11,10 @@ const Notificatin = ({ idCard, setIsToogle,getAllUsers, item }) => {
       .then((res) => {
         console.log("user eliminated");
         getAllUsers();
+        setConfirmation(['red', 'deleted user'])
+        setTimeout(() => {
+          setConfirmation(undefined)
+        }, 2000);
       })
       .catch((err) => console.log(err))
       .finally(setIsToogle(false));

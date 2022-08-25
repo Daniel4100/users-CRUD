@@ -20,7 +20,7 @@ const item = {
 
 }
 
-const UserForm = ({ getAllUsers, toggleForm, userInfo, setUserInfo }) => {
+const UserForm = ({ getAllUsers, toggleForm, userInfo, setUserInfo, setConfirmation }) => {
   const { register, handleSubmit, reset } = useForm();
 
   const createUser = (data) => {
@@ -31,6 +31,10 @@ const UserForm = ({ getAllUsers, toggleForm, userInfo, setUserInfo }) => {
         .then((res) => {
           getAllUsers();
           console.log(res + "new user sucefull");
+          setConfirmation(['green', 'added user'])
+          setTimeout(() => {
+            setConfirmation(undefined)
+          }, 2000);
         })
         .catch((err) => console.log(err))
         .finally(reset(defaultValues), toggleForm());
@@ -50,6 +54,10 @@ const UserForm = ({ getAllUsers, toggleForm, userInfo, setUserInfo }) => {
         .then((res) => {
           getAllUsers();
           console.log(res + "update Sucefull");
+          setConfirmation(['purple', 'updated user'])
+          setTimeout(() => {
+            setConfirmation(undefined)
+          }, 2000);
         })
         .catch((err) => console.log(err))
         .finally(setUserInfo(undefined), toggleForm());

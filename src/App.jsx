@@ -6,6 +6,7 @@ import UserCard from "./components/UserCard";
 import UserForm from "./components/UserForm";
 import { motion, AnimatePresence } from "framer-motion";
 import Notificatin from "./components/Notificatin";
+import Confirmation from "./components/Confirmation";
 
 const container = {
   hidden: { opacity: 0 },
@@ -28,6 +29,7 @@ function App() {
   const [userInfo, setUserInfo] = useState();
   const [isToogle, setIsToogle] = useState(false);
   const [idCard, setIdCard] = useState();
+  const [confirmation, setConfirmation] = useState();
 
   const getAllUsers = () => {
     const URL = "https://users-crud1.herokuapp.com/users/";
@@ -48,10 +50,18 @@ function App() {
     setIdCard(id);
     console.log(id);
   };
+  console.log(confirmation);
 
   return (
     <div className="App">
-      <motion.div >
+      <div>
+        <AnimatePresence>
+          {confirmation != undefined ? (
+            <Confirmation confirmation={confirmation} item={item} />
+          ) : null}
+        </AnimatePresence>
+      </div>
+      <motion.div>
         <AnimatePresence>
           {isToogle && (
             <Notificatin
@@ -59,6 +69,7 @@ function App() {
               setIsToogle={setIsToogle}
               getAllUsers={getAllUsers}
               item={item}
+              setConfirmation={setConfirmation}
             />
           )}
         </AnimatePresence>
@@ -82,6 +93,7 @@ function App() {
             userInfo={userInfo}
             setUserInfo={setUserInfo}
             setisForm={setisForm}
+            setConfirmation={setConfirmation}
           />
         )}
       </AnimatePresence>
