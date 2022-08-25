@@ -5,11 +5,29 @@ import axios from "axios";
 import UserCard from "./components/UserCard";
 import UserForm from "./components/UserForm";
 import { motion, AnimatePresence } from "framer-motion";
+import Notificatin from "./components/Notificatin";
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1 },
+};
 
 function App() {
   const [allUsers, setAllUsers] = useState();
   const [isForm, setisForm] = useState(false);
   const [userInfo, setUserInfo] = useState();
+  const [isToogle, setIsToogle] = useState(false);
+  const [idCard, setIdCard] = useState();
 
   const getAllUsers = () => {
     const URL = "https://users-crud1.herokuapp.com/users/";
@@ -25,27 +43,29 @@ function App() {
 
   const toggleForm = () => setisForm(!isForm);
 
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-      },
-    },
-  };
-
-  const item = {
-    hidden: { opacity: 0 },
-    show: { opacity: 1 },
-
+  const toggleConfirmation = (id) => {
+    setIsToogle(!isToogle);
+    setIdCard(id);
+    console.log(id);
   };
 
   return (
     <div className="App">
+      <motion.div >
+        <AnimatePresence>
+          {isToogle && (
+            <Notificatin
+              idCard={idCard}
+              setIsToogle={setIsToogle}
+              getAllUsers={getAllUsers}
+              item={item}
+            />
+          )}
+        </AnimatePresence>
+      </motion.div>
+
       <div className="containerTitle">
         <div>
-          {" "}
           <h2>Users</h2>
         </div>
         <div>
@@ -86,6 +106,7 @@ function App() {
                   setUserInfo={setUserInfo}
                   toggleForm={toggleForm}
                   item={item}
+                  toggleConfirmation={toggleConfirmation}
                 />
               ))}
           </motion.div>

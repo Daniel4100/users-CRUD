@@ -11,15 +11,7 @@ const defaultValues = {
   password: "",
   birthday: "",
 };
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      delayChildren: 1
-    }
-  }
-}
+
 
 const item = {
   hidden: { opacity: 0 },
@@ -86,10 +78,11 @@ const UserForm = ({ getAllUsers, toggleForm, userInfo, setUserInfo }) => {
         <input
           type="text"
           placeholder="First name"
+          maxLength={15}
           {...register("first_name")}
         />
-        <input type="text" placeholder="Last Name" {...register("last_name")} />
-        <input type="email" placeholder="Email" {...register("email")} />
+        <input type="text" placeholder="Last Name" maxLength={15} {...register("last_name")} />
+        <input type="email" placeholder="Email" maxLength={15} {...register("email")} />
         <input
           type="password"
           placeholder="Password"

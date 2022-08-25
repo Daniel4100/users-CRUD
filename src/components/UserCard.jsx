@@ -1,26 +1,18 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { motion, transform } from "framer-motion";
+import Statuscard from "./Statuscard";
 
-const userCard = ({ user, getAllUsers, setUserInfo, toggleForm, item }) => {
+const userCard = ({ user, toggleConfirmation, setUserInfo, toggleForm, item,  }) => {
 
+ 
 
-  const deleteUser = () => {
-    const URL = `https://users-crud1.herokuapp.com/users/${user.id}/`;
-    axios
-      .delete(URL)
-      .then((res) => {
-        console.log("user eliminated");
-        getAllUsers();
-        
-      })
-      .catch((err) => console.log(err)); 
-  };
 
   const getUser = () => {
     setUserInfo(user);
     toggleForm();
   };
+
 
   return (
     <motion.article className="article-card"  variants={item} whileHover={{
@@ -28,6 +20,9 @@ const userCard = ({ user, getAllUsers, setUserInfo, toggleForm, item }) => {
       transition: { duration: 0.1 },
     }} layout>
       {/* //duration 0.7 agregada como prueba */}
+      <div className="card__id">
+        <p>#{user.id}</p>
+      </div>
       <div>
         <h4>
           {user.first_name} {user.last_name}
@@ -40,7 +35,7 @@ const userCard = ({ user, getAllUsers, setUserInfo, toggleForm, item }) => {
       <p>{user.birthday}</p>
       <hr />
       <div className="buttonsContainer">
-        <button className="trash" onClick={deleteUser}>
+        <button className="trash" onClick={() => toggleConfirmation(user.id)}>
           <i className="far fa-trash-alt"></i>
         </button>
         <button className="edit" onClick={getUser}>
