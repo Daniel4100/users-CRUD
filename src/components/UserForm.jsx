@@ -82,7 +82,7 @@ const UserForm = ({ getAllUsers, toggleForm, userInfo, setUserInfo }) => {
           {...register("first_name")}
         />
         <input type="text" placeholder="Last Name" maxLength={15} {...register("last_name")} />
-        <input type="email" placeholder="Email" maxLength={15} {...register("email")} />
+        <input type="email" placeholder="Email" maxLength={30} {...register("email")} />
         <input
           type="password"
           placeholder="Password"
