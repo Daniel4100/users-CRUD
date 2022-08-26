@@ -77,7 +77,7 @@ function App() {
 
       <div className="containerTitle">
         <div>
-          <h2>Users</h2>
+          <h1>Users</h1>
         </div>
         <div>
           <button className="addUser" onClick={toggleForm}>

@@ -24,8 +24,12 @@ h4{
 .App{
     width: 100%;
     min-height: 100vh;
-    background-color: #ffffff;
+    background-image: url('/bg.jpg');
+    background-attachment: fixed;
     padding: 2em 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .confirmation{
     position: fixed;
@@ -74,6 +78,8 @@ h4{
     border: 3px solid #ff6174;
 }
 .containerTitle{
+    width: 100%;
+    max-width: 1424px;
     display: flex;
     align-items: center;
     background-color: rgba(0, 255, 255, 0);
@@ -147,6 +153,7 @@ h4{
 
 .containerUsers{
     width: 100%;
+    max-width: 1410px;
     min-height: 100%;
     display: flex;
     justify-content: center;
@@ -171,9 +178,10 @@ input{
 .article-card{
     width: 381px;
     height: 274px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.479);
+    backdrop-filter: blur(10px);
     padding: .7em .9em;
-    border: 1px solid #E5E5E5;
+    border: 1px solid #ffffff;
     border-radius: 4px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     position: relative;
@@ -193,7 +201,7 @@ input{
 
 
 span{
-    color: #D3D3D3;
+    color: #9c9c9c;
 }
 .buttonsContainer{
     display: flex;
