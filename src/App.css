@@ -8,11 +8,14 @@ body, p{
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
+    
+
+    
+}
+body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    
-    
 }
 p{
     margin-bottom: 1em;
@@ -27,7 +30,7 @@ h4{
 
 .App{
     width: 100%;
-    max-width: 1500px;
+    max-width: 1600px;
     min-height: 100vh;
     background-image: url('/bg.jpg');
     background-size: cover;
@@ -183,7 +186,8 @@ input{
 }
 
 .article-card{
-    width: 381px;
+    width: 100%;
+    max-width: 360px;
     height: 274px;
     background-color: rgba(255, 255, 255, 0.479);
     backdrop-filter: blur(10px);
