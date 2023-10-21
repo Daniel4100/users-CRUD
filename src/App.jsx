@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 import axios from "axios";
@@ -7,20 +7,21 @@ import UserForm from "./components/UserForm";
 import { motion, AnimatePresence } from "framer-motion";
 import Notificatin from "./components/Notificatin";
 import Confirmation from "./components/Confirmation";
+import user from "./services/users.service";
 
 const container = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.3,
+      staggerChildren: 0.1,
     },
   },
 };
 
 const item = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1 },
+  hidden: { opacity: 0, scale: 0.9 },
+  show: { opacity: 1, scale: 1 },
 };
 
 function App() {
@@ -31,13 +32,14 @@ function App() {
   const [idCard, setIdCard] = useState();
   const [confirmation, setConfirmation] = useState();
 
-  const getAllUsers = () => {
-    const URL = "https://users-crud1.herokuapp.com/users/";
-    axios
-      .get(URL)
-      .then((res) => setAllUsers(res.data))
-      .catch((err) => console.log(err));
-  };
+  const getAllUsers = useCallback(async () => {
+    try {
+      const resp = await user.getAll();
+      setAllUsers(resp);
+    } catch (error) {
+      console.log({ error });
+    }
+  }, []);
 
   useEffect(() => {
     getAllUsers();
@@ -99,11 +101,12 @@ function App() {
       </AnimatePresence>
       <AnimatePresence>
         {allUsers && (
-          <motion.div
+          <motion.ul
             layout
             variants={container}
             initial="hidden"
             animate="show"
+            transition={{ delay: 1 }}
             className="containerUsers"
           >
             {allUsers
@@ -121,7 +124,7 @@ function App() {
                   toggleConfirmation={toggleConfirmation}
                 />
               ))}
-          </motion.div>
+          </motion.ul>
         )}
       </AnimatePresence>
     </div>

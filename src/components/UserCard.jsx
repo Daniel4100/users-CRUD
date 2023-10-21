@@ -1,24 +1,31 @@
-import axios from "axios";
-import React, { useState } from "react";
-import { motion, transform } from "framer-motion";
-import Statuscard from "./Statuscard";
+import { motion } from "framer-motion";
+import { EditIcon, TrashIcon } from "./shared/icons";
 
-const userCard = ({ user, toggleConfirmation, setUserInfo, toggleForm, item,  }) => {
-
- 
-
-
+const userCard = ({
+  user,
+  toggleConfirmation,
+  setUserInfo,
+  toggleForm,
+  item,
+}) => {
   const getUser = () => {
     setUserInfo(user);
     toggleForm();
   };
 
-
   return (
-    <motion.article className="article-card"  variants={item} whileHover={{
-      scale: 1.02,
-      transition: { duration: 0.1 },
-    }} layout>
+    <motion.li
+      className="article-card"
+      variants={item}
+      whileHover={{
+        scale: 1.01,
+        transition: { duration: 0.1 },
+      }}
+      layout
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.2 }}
+    >
       {/* //duration 0.7 agregada como prueba */}
       <div className="card__id">
         <p>#{user.id}</p>
@@ -35,14 +42,14 @@ const userCard = ({ user, toggleConfirmation, setUserInfo, toggleForm, item,  })
       <p>{user.birthday}</p>
       <hr />
       <div className="buttonsContainer">
-        <button className="trash" onClick={() => toggleConfirmation(user.id)}>
-          <i className="far fa-trash-alt"></i>
+        <button className="trash action_button" onClick={() => toggleConfirmation(user.id)}>
+          <TrashIcon />
         </button>
-        <button className="edit" onClick={getUser}>
-          
+        <button className="edit action_button" onClick={getUser}>
+          <EditIcon/>
         </button>
       </div>
-    </motion.article>
+    </motion.li>
   );
 };
 
